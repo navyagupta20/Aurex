@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050505;
+  --foreground: #F5F5F5;
+
+  /* AUREX BLACK */
+  --aurex-black: #050505;
+  --aurex-black-soft: #0B0B0B;
+  --aurex-card: #101010;
+  --aurex-card-hover: #151515;
+
+  /* AUREX BURGUNDY */
+  --aurex-burgundy: #8F2945;
+  --aurex-burgundy-hover: #A83252;
+
+  /* LIGHT TEXT */
+  --aurex-cream: #F5E9E2;
+  --aurex-muted: #A6A6A6;
+
+  /* BORDERS */
+  --aurex-border: #242424;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #050505;
+  color: #F5F5F5;
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* Headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+/* Links & Buttons */
+
+button,
+a {
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* Selection */
+
+::selection {
+  background: #8F2945;
+  color: #FFFFFF;
+}
