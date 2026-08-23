@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aurex – GD Practice Platform
 
-## Getting Started
+Aurex is a **full-stack Group Discussion (GD) and placement preparation platform** designed to help students build confidence, improve communication skills, and prepare for campus placements.
 
-First, run the development server:
+The platform provides students with a structured environment to practice GDs through **topic-based practice, live discussion sessions, and ATS-based resume analysis**. It is designed to make placement preparation accessible, simple, and beginner-friendly.
+
+## ✨ Features
+
+* 🗣️ **Topic-Based GD Practice** – Practice discussions across beginner-friendly topics.
+* 🔴 **Live GD Challenges** – Join timed discussion sessions with other participants.
+* ⏱️ **15-Minute GD Sessions** – Practice in a structured environment with a session timer.
+* 👥 **Participant Management** – View participants and interact during live sessions.
+* 💬 **Discussion Interface** – Share responses and participate in structured discussions.
+* 📄 **ATS Resume Analyzer** – Analyze resumes using ATS-based scoring, keyword matching, and section analysis.
+* 📚 **Placement Preparation** – Built with campus placement preparation in mind.
+* 🎯 **Beginner-Friendly** – Designed especially for students starting their GD preparation.
+
+## 🛠️ Tech Stack
+
+* **Next.js**
+* **React**
+* **TypeScript**
+* **Tailwind CSS**
+* **PostgreSQL**
+* **Drizzle ORM**
+* **Mammoth** – DOCX resume text extraction
+* **unpdf** – PDF resume text extraction
+
+## 🚀 Getting Started
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000 in your browser to view Aurex.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The application automatically updates whenever you make changes to the source code.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎯 Goal
 
-## Learn More
+Aurex aims to provide students with a **free and accessible platform to practice GDs, develop communication skills, analyze their resumes, and strengthen their overall placement readiness**.
 
-To learn more about Next.js, take a look at the following resources:
+> Built as a student-focused project to make placement preparation more practical, interactive, and accessible.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔮 Future Enhancements
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* 🤖 **AI-Powered GD Feedback**
+* 🧠 **AI-Based Performance Analysis**
+* 🛡️ **AI GD Moderation**
+* 📄 **AI-Powered Resume Improvement Suggestions**
+* 🎯 **Job-Specific Resume Analysis**
+* 🗺️ **Placement Preparation Roadmap**
+* 📧 **GD Session Notifications**
 
-## Deploy on Vercel
+## 📚 Learn More
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is built with [Next.js](https://nextjs.org).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 License
+
+This project is developed as a student project for learning and placement preparation.
