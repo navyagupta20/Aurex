@@ -28,6 +28,9 @@ export default function AboutPage() {
 
           </Link>
 
+
+          {/* ================= NAVIGATION ================= */}
+
           <div className="hidden items-center gap-8 text-sm font-medium md:flex">
 
             <Link
@@ -42,6 +45,13 @@ export default function AboutPage() {
               className="text-[#6B6863] transition hover:text-[#8F2945]"
             >
               Practice
+            </Link>
+
+            <Link
+              href="/dashboard"
+              className="text-[#6B6863] transition hover:text-[#8F2945]"
+            >
+              Dashboard
             </Link>
 
             <Link
@@ -77,6 +87,7 @@ export default function AboutPage() {
 
         <div className="pointer-events-none absolute -left-24 bottom-0 h-64 w-64 rounded-full border border-[#8F2945]/10" />
 
+
         <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
 
           <div className="max-w-5xl">
@@ -102,6 +113,7 @@ export default function AboutPage() {
               <br />
 
               Discussions
+
               <span className="text-[#8F2945]">
                 {" "}before you compete.
               </span>
@@ -131,13 +143,6 @@ export default function AboutPage() {
                 className="rounded-lg bg-[#171717] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#8F2945]"
               >
                 Start Practicing
-              </Link>
-
-              <Link
-                href="/practice/live-challenge"
-                className="rounded-lg border border-[#DCDCDC] bg-white px-6 py-3 text-sm font-semibold text-[#171717] transition hover:border-[#8F2945] hover:text-[#8F2945]"
-              >
-                Join Live GD
               </Link>
 
             </div>
@@ -473,13 +478,13 @@ export default function AboutPage() {
 
       {/* ================= MISSION ================= */}
 
-      <section className="bg-[#171717] text-white">
+      <section className="bg-[#FFF4F6] text-[#171717]">
 
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
 
           <div className="max-w-4xl">
 
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#C98A9D]">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#8F2945]">
               Our Mission
             </p>
 
@@ -487,7 +492,7 @@ export default function AboutPage() {
 
               Give every student a place
 
-              <span className="text-[#C98A9D]">
+              <span className="text-[#8F2945]">
                 {" "}to practice before
               </span>
 
@@ -495,7 +500,7 @@ export default function AboutPage() {
 
             </h2>
 
-            <p className="mt-6 max-w-2xl text-sm leading-7 text-[#999]">
+            <p className="mt-6 max-w-2xl text-sm leading-7 text-[#6F6A65]">
 
               Aurex is built around a simple idea:
               students should have the opportunity to practice,
@@ -503,53 +508,6 @@ export default function AboutPage() {
               the pressure of a real placement process.
 
             </p>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* ================= CTA ================= */}
-
-      <section className="bg-[#FAFAF9] py-16">
-
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-
-          <div className="rounded-2xl bg-[#8F2945] px-8 py-12 text-white sm:px-12">
-
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/70">
-              Start Your GD Journey
-            </p>
-
-            <h2 className="mt-4 max-w-2xl text-3xl font-bold tracking-[-0.03em] sm:text-4xl">
-              Think. Prepare. Compete.
-            </h2>
-
-            <p className="mt-4 max-w-xl text-sm leading-6 text-white/75">
-              Practice Group Discussions, join live challenges
-              and build the confidence you need for your next
-              placement.
-            </p>
-
-            <div className="mt-7 flex flex-wrap gap-3">
-
-              <Link
-                href="/practice"
-                className="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-[#171717] transition hover:bg-[#F1F1F1]"
-              >
-                Explore GD Topics
-              </Link>
-
-              <Link
-                href="/practice/live-challenge"
-                className="rounded-lg border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-              >
-                Join Live GD
-              </Link>
-
-            </div>
 
           </div>
 

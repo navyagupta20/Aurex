@@ -38,3 +38,35 @@ export async function GET(
     );
   }
 }
+export async function DELETE(
+  request: Request,
+  { params }: Props
+) {
+  try {
+    const { topicId } = await params;
+
+    const result = await db
+      .delete(topics)
+      .where(eq(topics.id, topicId))
+      .returning();
+
+    if (result.length === 0) {
+      return NextResponse.json(
+        { error: "Topic not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({
+      message: "Topic deleted successfully",
+      topic: result[0],
+    });
+  } catch (error) {
+    console.error("Error deleting topic:", error);
+
+    return NextResponse.json(
+      { error: "Failed to delete topic" },
+      { status: 500 }
+    );
+  }
+}

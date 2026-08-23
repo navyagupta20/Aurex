@@ -9,6 +9,7 @@ export default function Home() {
       {/* ================= NAVBAR ================= */}
 
       <nav className="border-b border-[#E5E5E5] bg-white">
+
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
 
           <Link href="/" className="flex items-center gap-3">
@@ -18,6 +19,7 @@ export default function Home() {
             </div>
 
             <div>
+
               <p className="text-lg font-bold tracking-tight">
                 Aurex
               </p>
@@ -25,6 +27,7 @@ export default function Home() {
               <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[#8F2945]">
                 Practice. Prepare. Compete.
               </p>
+
             </div>
 
           </Link>
@@ -46,6 +49,13 @@ export default function Home() {
             </Link>
 
             <Link
+              href="/dashboard"
+              className="text-[#6B6863] transition hover:text-[#171717]"
+            >
+              Dashboard
+            </Link>
+
+            <Link
               href="/about"
               className="text-[#6B6863] transition hover:text-[#171717]"
             >
@@ -62,6 +72,7 @@ export default function Home() {
           </div>
 
         </div>
+
       </nav>
 
 
@@ -108,11 +119,9 @@ export default function Home() {
             </h1>
 
             <p className="mt-7 max-w-2xl text-base leading-7 text-[#6B6863] sm:text-lg">
-
               Build confidence through realistic group discussion
               practice designed for college placements,
               interviews and competitive discussions.
-
             </p>
 
             <div className="mt-9 flex flex-wrap gap-3">
@@ -122,13 +131,6 @@ export default function Home() {
                 className="rounded-lg bg-[#171717] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#8F2945]"
               >
                 Start Practicing
-              </Link>
-
-              <Link
-                href="/practice/live-challenge"
-                className="rounded-lg border border-[#DCDCDC] bg-white px-6 py-3 text-sm font-semibold text-[#171717] transition hover:border-[#8F2945] hover:text-[#8F2945]"
-              >
-                Join Live GD
               </Link>
 
             </div>
@@ -202,8 +204,7 @@ export default function Home() {
               </h2>
 
               <p className="mt-3 max-w-xl text-sm leading-6 text-[#6B6863]">
-                Practice realistic group discussion topics
-                at your own level.
+                Choose how you want to practice your group discussion skills.
               </p>
 
             </div>
@@ -212,17 +213,20 @@ export default function Home() {
               href="/practice"
               className="text-sm font-semibold text-[#8F2945] transition hover:text-[#171717]"
             >
-              View all topics →
+              Open Practice Center →
             </Link>
 
           </div>
 
 
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          {/* ================= PRACTICE OPTIONS ================= */}
 
-            {/* CARD 1 */}
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
 
-            <article className="group rounded-2xl border border-[#E2E2E2] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:border-[#BFA4AE] hover:shadow-[0_18px_45px_rgba(0,0,0,0.07)]">
+
+            {/* ================= TOPIC-BASED GD ================= */}
+
+            <article className="group rounded-2xl border border-[#E2E2E2] bg-white p-8 transition duration-300 hover:-translate-y-1 hover:border-[#BFA4AE] hover:shadow-[0_18px_45px_rgba(0,0,0,0.07)]">
 
               <span className="text-xs font-bold text-[#B5B5B5]">
                 01
@@ -231,27 +235,28 @@ export default function Home() {
               <div className="mt-8">
 
                 <span className="rounded-full bg-[#8F2945]/8 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#8F2945]">
-                  Beginner
+                  Practice
                 </span>
 
-                <h3 className="mt-5 text-xl font-bold leading-snug">
-                  Should Students Use Smartphones in College?
+                <h3 className="mt-5 text-2xl font-bold leading-snug">
+                  Topic-Based GD
                 </h3>
 
-                <p className="mt-4 text-sm leading-6 text-[#777]">
-                  Discuss whether smartphones help students
-                  learn or distract them.
+                <p className="mt-4 max-w-lg text-sm leading-6 text-[#777]">
+                  Practice GD topics at different difficulty levels
+                  and improve your ability to structure and present
+                  your arguments.
                 </p>
 
               </div>
 
-              <div className="mt-7 border-t border-[#EEEEEE] pt-5">
+              <div className="mt-8 border-t border-[#EEEEEE] pt-5">
 
                 <Link
-                  href="/practice"
+                  href="/practice/topic-based"
                   className="text-xs font-semibold text-[#8F2945] transition hover:text-[#171717]"
                 >
-                  Practice topic →
+                  Explore Topics →
                 </Link>
 
               </div>
@@ -259,9 +264,9 @@ export default function Home() {
             </article>
 
 
-            {/* CARD 2 */}
+            {/* ================= LIVE CHALLENGE ================= */}
 
-            <article className="group rounded-2xl border border-[#E2E2E2] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:border-[#BFA4AE] hover:shadow-[0_18px_45px_rgba(0,0,0,0.07)]">
+            <article className="group rounded-2xl border border-[#E2E2E2] bg-white p-8 transition duration-300 hover:-translate-y-1 hover:border-[#BFA4AE] hover:shadow-[0_18px_45px_rgba(0,0,0,0.07)]">
 
               <span className="text-xs font-bold text-[#B5B5B5]">
                 02
@@ -270,66 +275,28 @@ export default function Home() {
               <div className="mt-8">
 
                 <span className="rounded-full bg-[#8F2945]/8 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#8F2945]">
-                  Intermediate
+                  Real-Time
                 </span>
 
-                <h3 className="mt-5 text-xl font-bold leading-snug">
-                  Impact of Artificial Intelligence
+                <h3 className="mt-5 text-2xl font-bold leading-snug">
+                  Live Challenge
                 </h3>
 
-                <p className="mt-4 text-sm leading-6 text-[#777]">
-                  Discuss the benefits, challenges and future
-                  impact of AI.
+                <p className="mt-4 max-w-lg text-sm leading-6 text-[#777]">
+                  Join a real-time group discussion with other
+                  students and experience a realistic 15-minute
+                  GD environment.
                 </p>
 
               </div>
 
-              <div className="mt-7 border-t border-[#EEEEEE] pt-5">
+              <div className="mt-8 border-t border-[#EEEEEE] pt-5">
 
                 <Link
-                  href="/practice"
+                  href="/practice/live-challenge"
                   className="text-xs font-semibold text-[#8F2945] transition hover:text-[#171717]"
                 >
-                  Practice topic →
-                </Link>
-
-              </div>
-
-            </article>
-
-
-            {/* CARD 3 */}
-
-            <article className="group rounded-2xl border border-[#E2E2E2] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:border-[#BFA4AE] hover:shadow-[0_18px_45px_rgba(0,0,0,0.07)]">
-
-              <span className="text-xs font-bold text-[#B5B5B5]">
-                03
-              </span>
-
-              <div className="mt-8">
-
-                <span className="rounded-full bg-[#8F2945]/8 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#8F2945]">
-                  Advanced
-                </span>
-
-                <h3 className="mt-5 text-xl font-bold leading-snug">
-                  Privacy vs National Security
-                </h3>
-
-                <p className="mt-4 text-sm leading-6 text-[#777]">
-                  Explore the difficult balance between
-                  individual privacy and security.
-                </p>
-
-              </div>
-
-              <div className="mt-7 border-t border-[#EEEEEE] pt-5">
-
-                <Link
-                  href="/practice"
-                  className="text-xs font-semibold text-[#8F2945] transition hover:text-[#171717]"
-                >
-                  Practice topic →
+                  Join Live Challenge →
                 </Link>
 
               </div>
@@ -343,38 +310,33 @@ export default function Home() {
       </section>
 
 
-      {/* ================= LIVE GD ================= */}
+      {/* ================= PLACEMENT JOURNEY ================= */}
 
       <section className="bg-[#171717] text-white">
 
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
 
-          <div className="grid items-center gap-10 md:grid-cols-[1fr_auto]">
+          <div className="grid gap-10 md:grid-cols-[1fr_auto] md:items-center">
 
             <div>
 
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#C98A9D]">
-                Live Challenge
+                Placement Journey
               </p>
 
               <h2 className="mt-4 max-w-2xl text-3xl font-bold tracking-[-0.03em] sm:text-4xl">
-                Take your practice into a real-time GD.
+                Prepare with purpose. Perform with confidence.
               </h2>
 
               <p className="mt-4 max-w-xl text-sm leading-6 text-[#A5A5A5]">
-                Join other students, discuss a topic and
-                experience a realistic 15-minute group discussion.
+                Practice GDs, strengthen your communication skills,
+                improve your resume and track your progress as you
+                prepare for placements.
               </p>
 
             </div>
 
-            <Link
-              href="/practice/live-challenge"
-              className="inline-flex items-center justify-center rounded-lg bg-white px-7 py-3.5 text-sm font-semibold text-[#171717] transition hover:bg-[#8F2945] hover:text-white"
-            >
-              Enter Live GD →
-            </Link>
-
+            
           </div>
 
         </div>

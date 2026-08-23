@@ -27,11 +27,16 @@ export default function LiveBeginner() {
       setLoading(true);
 
       const response = await fetch(
-        "/api/live-challenges"
+        "/api/live-challenges",
+        {
+          cache: "no-store",
+        }
       );
 
       if (!response.ok) {
-        throw new Error("Failed to load challenges");
+        throw new Error(
+          "Failed to load challenges"
+        );
       }
 
       const data: Challenge[] =
@@ -39,14 +44,18 @@ export default function LiveBeginner() {
 
       const waitingChallenge = data.find(
         (item) =>
-          item.level.toLowerCase() === "beginner" &&
+          item.level.toLowerCase() ===
+            "beginner" &&
           item.status === "waiting" &&
           item.maxParticipants > 0
       );
 
-      setChallenge(waitingChallenge || null);
+      setChallenge(
+        waitingChallenge || null
+      );
     } catch (error) {
       console.error(error);
+      setChallenge(null);
     } finally {
       setLoading(false);
     }
@@ -67,10 +76,8 @@ export default function LiveBeginner() {
     try {
       setJoining(true);
 
-      // Get logged-in user
-      const userResponse = await fetch(
-        "/api/auth/me"
-      );
+      const userResponse =
+        await fetch("/api/auth/me");
 
       if (!userResponse.ok) {
         alert("Please sign in first.");
@@ -78,15 +85,16 @@ export default function LiveBeginner() {
         return;
       }
 
-      const user = await userResponse.json();
+      const user =
+        await userResponse.json();
 
-      // Join challenge using real user ID
       const response = await fetch(
         `/api/live-challenges/${challenge.id}/join`,
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type":
+              "application/json",
           },
           body: JSON.stringify({
             userId: user.id,
@@ -94,11 +102,13 @@ export default function LiveBeginner() {
         }
       );
 
-      const data = await response.json();
+      const data =
+        await response.json();
 
       if (!response.ok) {
         alert(
-          data.error || "Unable to join challenge."
+          data.error ||
+            "Unable to join challenge."
         );
         return;
       }
@@ -130,13 +140,11 @@ export default function LiveBeginner() {
             href="/"
             className="flex items-center gap-3"
           >
-
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#171717] text-sm font-bold text-white">
               A
             </div>
 
             <div>
-
               <p className="text-lg font-bold tracking-tight">
                 Aurex
               </p>
@@ -144,9 +152,7 @@ export default function LiveBeginner() {
               <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[#8F2945]">
                 Practice. Prepare. Compete.
               </p>
-
             </div>
-
           </Link>
 
           <div className="hidden items-center gap-8 text-sm font-medium md:flex">
@@ -197,8 +203,6 @@ export default function LiveBeginner() {
 
       <section className="relative overflow-hidden bg-white">
 
-        {/* Decorative circles */}
-
         <div className="pointer-events-none absolute -right-20 top-10 h-72 w-72 rounded-full border border-[#E2E2E2]" />
 
         <div className="pointer-events-none absolute -right-2 top-28 h-44 w-44 rounded-full border border-[#E7E7E7]" />
@@ -208,8 +212,6 @@ export default function LiveBeginner() {
         <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-20 lg:px-10 lg:pb-20 lg:pt-24">
 
           <div className="max-w-3xl">
-
-            {/* Label */}
 
             <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#E2E2E2] bg-[#FAFAF9] px-4 py-2">
 
@@ -221,8 +223,6 @@ export default function LiveBeginner() {
 
             </div>
 
-            {/* Heading */}
-
             <h1 className="text-5xl font-bold leading-[1.05] tracking-[-0.045em] sm:text-6xl">
 
               Join a
@@ -233,9 +233,10 @@ export default function LiveBeginner() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-7 text-[#6B6863] sm:text-lg">
-              Join a beginner-level group discussion
-              with other students and practice communicating
-              in a realistic placement environment.
+              Join a beginner-level group
+              discussion and test your
+              communication skills in a
+              realistic placement environment.
             </p>
 
           </div>
@@ -251,8 +252,6 @@ export default function LiveBeginner() {
 
         <div className="mx-auto max-w-5xl px-6 lg:px-10">
 
-          {/* Section label */}
-
           <div className="flex items-center gap-4">
 
             <div className="h-px flex-1 bg-[#E2E2E2]" />
@@ -266,13 +265,9 @@ export default function LiveBeginner() {
           </div>
 
 
-          {/* Main card */}
-
           <div className="mt-8 rounded-2xl border border-[#E2E2E2] bg-white p-7 shadow-[0_18px_45px_rgba(0,0,0,0.05)] md:p-9">
 
             {loading ? (
-
-              /* ================= LOADING ================= */
 
               <div className="py-14 text-center">
 
@@ -285,8 +280,6 @@ export default function LiveBeginner() {
               </div>
 
             ) : challenge ? (
-
-              /* ================= CHALLENGE AVAILABLE ================= */
 
               <>
 
@@ -302,6 +295,11 @@ export default function LiveBeginner() {
                       Ready to join?
                     </h2>
 
+                    <p className="mt-3 max-w-lg text-sm leading-6 text-[#6B6863]">
+                      The GD topic will be revealed
+                      after you enter the live session.
+                    </p>
+
                   </div>
 
                   <span className="inline-flex w-fit items-center gap-2 rounded-full bg-[#8F2945]/8 px-4 py-2 text-xs font-bold uppercase tracking-[0.1em] text-[#8F2945]">
@@ -315,9 +313,9 @@ export default function LiveBeginner() {
                 </div>
 
 
-                {/* Information */}
+                {/* ================= SESSION DETAILS ================= */}
 
-                <div className="mt-7 grid gap-4 md:grid-cols-3">
+                <div className="mt-7 grid gap-4 md:grid-cols-2">
 
                   <div className="rounded-xl border border-[#E5E5E5] bg-[#FAFAF9] p-5">
 
@@ -332,14 +330,14 @@ export default function LiveBeginner() {
                   </div>
 
 
-                  <div className="rounded-xl border border-[#E5E5E5] bg-[#FAFAF9] p-5 md:col-span-2">
+                  <div className="rounded-xl border border-[#E5E5E5] bg-[#FAFAF9] p-5">
 
                     <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#999]">
-                      Topic
+                      Thinking Time
                     </p>
 
-                    <p className="mt-2 text-lg font-bold leading-snug">
-                      {challenge.topicTitle}
+                    <p className="mt-2 text-lg font-bold">
+                      2 minutes
                     </p>
 
                   </div>
@@ -347,37 +345,33 @@ export default function LiveBeginner() {
                 </div>
 
 
-                {/* Session status */}
+                {/* ================= HIDDEN TOPIC ================= */}
 
                 <div className="mt-5 rounded-xl border border-[#E5E5E5] bg-[#171717] p-6 text-white">
 
-                  <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
+                  <div className="flex items-center gap-4">
+
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#8F2945]">
+
+                      <span className="text-lg font-bold">
+                        ?
+                      </span>
+
+                    </div>
 
                     <div>
 
                       <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#A5A5A5]">
-                        Live Session
+                        GD Topic
                       </p>
 
-                      <p className="mt-2 text-xl font-bold">
-                        Available to join
+                      <p className="mt-1 text-lg font-bold">
+                        Revealed inside the GD
                       </p>
 
                       <p className="mt-1 text-sm text-[#A5A5A5]">
-                        Join the waiting session and get ready
-                        for the discussion.
-                      </p>
-
-                    </div>
-
-                    <div className="text-left sm:text-right">
-
-                      <p className="text-3xl font-bold text-white">
-                        15
-                      </p>
-
-                      <p className="text-xs text-[#A5A5A5]">
-                        minutes
+                        You will see the topic when
+                        the session begins.
                       </p>
 
                     </div>
@@ -387,7 +381,7 @@ export default function LiveBeginner() {
                 </div>
 
 
-                {/* Join */}
+                {/* ================= JOIN ================= */}
 
                 <button
                   onClick={joinChallenge}
@@ -402,8 +396,6 @@ export default function LiveBeginner() {
               </>
 
             ) : (
-
-              /* ================= NO SESSION ================= */
 
               <div className="py-10 text-center">
 
@@ -420,8 +412,8 @@ export default function LiveBeginner() {
                 </h2>
 
                 <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-[#6B6863]">
-                  There is currently no beginner challenge
-                  waiting for participants.
+                  There is currently no beginner
+                  challenge waiting for participants.
                   Check again in a moment.
                 </p>
 

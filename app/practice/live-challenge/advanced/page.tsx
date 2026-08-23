@@ -27,11 +27,16 @@ export default function LiveAdvanced() {
       setLoading(true);
 
       const response = await fetch(
-        "/api/live-challenges"
+        "/api/live-challenges",
+        {
+          cache: "no-store",
+        }
       );
 
       if (!response.ok) {
-        throw new Error("Failed to load challenges");
+        throw new Error(
+          "Failed to load challenges"
+        );
       }
 
       const data: Challenge[] =
@@ -39,14 +44,18 @@ export default function LiveAdvanced() {
 
       const waitingChallenge = data.find(
         (item) =>
-          item.level.toLowerCase() === "advanced" &&
+          item.level.toLowerCase() ===
+            "advanced" &&
           item.status === "waiting" &&
           item.maxParticipants > 0
       );
 
-      setChallenge(waitingChallenge || null);
+      setChallenge(
+        waitingChallenge || null
+      );
     } catch (error) {
       console.error(error);
+      setChallenge(null);
     } finally {
       setLoading(false);
     }
@@ -67,9 +76,8 @@ export default function LiveAdvanced() {
     try {
       setJoining(true);
 
-      const userResponse = await fetch(
-        "/api/auth/me"
-      );
+      const userResponse =
+        await fetch("/api/auth/me");
 
       if (!userResponse.ok) {
         alert("Please sign in first.");
@@ -77,14 +85,16 @@ export default function LiveAdvanced() {
         return;
       }
 
-      const user = await userResponse.json();
+      const user =
+        await userResponse.json();
 
       const response = await fetch(
         `/api/live-challenges/${challenge.id}/join`,
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type":
+              "application/json",
           },
           body: JSON.stringify({
             userId: user.id,
@@ -92,11 +102,13 @@ export default function LiveAdvanced() {
         }
       );
 
-      const data = await response.json();
+      const data =
+        await response.json();
 
       if (!response.ok) {
         alert(
-          data.error || "Unable to join challenge."
+          data.error ||
+            "Unable to join challenge."
         );
         return;
       }
@@ -118,7 +130,7 @@ export default function LiveAdvanced() {
   return (
     <main className="min-h-screen bg-[#FAFAF9] text-[#171717]">
 
-      {/* ================= NAVBAR ================= */}
+      {/* NAVBAR */}
 
       <nav className="border-b border-[#E5E5E5] bg-white">
 
@@ -190,8 +202,7 @@ export default function LiveAdvanced() {
 
       </nav>
 
-
-      {/* ================= HERO ================= */}
+      {/* HERO */}
 
       <section className="relative overflow-hidden bg-white">
 
@@ -217,17 +228,18 @@ export default function LiveAdvanced() {
 
             <h1 className="text-5xl font-bold leading-[1.05] tracking-[-0.045em] sm:text-6xl">
 
-              Ready for the
+              Join an
               <span className="text-[#8F2945]">
-                {" "}challenge?
+                {" "}Advanced GD.
               </span>
 
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-7 text-[#6B6863] sm:text-lg">
-              Test your reasoning, confidence and
-              communication skills in a complex,
-              placement-level group discussion.
+              Challenge yourself with complex,
+              placement-level discussions that
+              require strong reasoning and
+              communication.
             </p>
 
           </div>
@@ -236,8 +248,7 @@ export default function LiveAdvanced() {
 
       </section>
 
-
-      {/* ================= SESSION ================= */}
+      {/* SESSION */}
 
       <section className="bg-[#FAFAF9] py-16 lg:py-20">
 
@@ -254,7 +265,6 @@ export default function LiveAdvanced() {
             <div className="h-px flex-1 bg-[#E2E2E2]" />
 
           </div>
-
 
           <div className="mt-8 rounded-2xl border border-[#E2E2E2] bg-white p-7 shadow-[0_18px_45px_rgba(0,0,0,0.05)] md:p-9">
 
@@ -283,8 +293,13 @@ export default function LiveAdvanced() {
                     </p>
 
                     <h2 className="mt-3 text-3xl font-bold tracking-[-0.03em]">
-                      Take your seat.
+                      Ready to join?
                     </h2>
+
+                    <p className="mt-3 max-w-lg text-sm leading-6 text-[#6B6863]">
+                      Enter the live session and
+                      prepare for the discussion.
+                    </p>
 
                   </div>
 
@@ -298,8 +313,7 @@ export default function LiveAdvanced() {
 
                 </div>
 
-
-                <div className="mt-7 grid gap-4 md:grid-cols-3">
+                <div className="mt-7 grid gap-4 md:grid-cols-2">
 
                   <div className="rounded-xl border border-[#E5E5E5] bg-[#FAFAF9] p-5">
 
@@ -313,51 +327,45 @@ export default function LiveAdvanced() {
 
                   </div>
 
-
-                  <div className="rounded-xl border border-[#E5E5E5] bg-[#FAFAF9] p-5 md:col-span-2">
+                  <div className="rounded-xl border border-[#E5E5E5] bg-[#FAFAF9] p-5">
 
                     <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#999]">
-                      Topic
+                      Thinking Time
                     </p>
 
-                    <p className="mt-2 text-lg font-bold leading-snug">
-                      {challenge.topicTitle}
+                    <p className="mt-2 text-lg font-bold">
+                      2 minutes
                     </p>
 
                   </div>
 
                 </div>
 
-
                 <div className="mt-5 rounded-xl border border-[#E5E5E5] bg-[#171717] p-6 text-white">
 
-                  <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
+                  <div className="flex items-center gap-4">
+
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#8F2945]">
+
+                      <span className="text-lg font-bold">
+                        ?
+                      </span>
+
+                    </div>
 
                     <div>
 
                       <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#A5A5A5]">
-                        Live Session
+                        GD Topic
                       </p>
 
-                      <p className="mt-2 text-xl font-bold">
-                        Available to join
+                      <p className="mt-1 text-lg font-bold">
+                        Revealed inside the GD
                       </p>
 
                       <p className="mt-1 text-sm text-[#A5A5A5]">
-                        Bring your strongest arguments
-                        and communication skills.
-                      </p>
-
-                    </div>
-
-                    <div className="text-left sm:text-right">
-
-                      <p className="text-3xl font-bold">
-                        15
-                      </p>
-
-                      <p className="text-xs text-[#A5A5A5]">
-                        minutes
+                        You will see the topic when
+                        the session begins.
                       </p>
 
                     </div>
@@ -365,7 +373,6 @@ export default function LiveAdvanced() {
                   </div>
 
                 </div>
-
 
                 <button
                   onClick={joinChallenge}
@@ -417,8 +424,7 @@ export default function LiveAdvanced() {
 
       </section>
 
-
-      {/* ================= FOOTER ================= */}
+      {/* FOOTER */}
 
       <footer className="border-t border-[#E5E5E5] bg-white">
 

@@ -27,6 +27,9 @@ export default function LiveChallenge() {
 
           </Link>
 
+
+          {/* ================= NAVIGATION ================= */}
+
           <div className="hidden items-center gap-8 text-sm font-medium md:flex">
 
             <Link
@@ -36,18 +39,20 @@ export default function LiveChallenge() {
               Home
             </Link>
 
+            {/* PRACTICE HIGHLIGHTED */}
             <Link
               href="/practice"
-              className="text-[#6B6863] transition hover:text-[#171717]"
+              className="text-[#8F2945]"
             >
               Practice
             </Link>
 
+            {/* DASHBOARD NOT HIGHLIGHTED */}
             <Link
-              href="/practice/live-challenge"
-              className="text-[#8F2945]"
+              href="/dashboard"
+              className="text-[#6B6863] transition hover:text-[#171717]"
             >
-              Live GD
+              Dashboard
             </Link>
 
             <Link
@@ -82,6 +87,7 @@ export default function LiveChallenge() {
 
         <div className="pointer-events-none absolute left-[-100px] top-52 h-64 w-64 rounded-full bg-[#8F2945]/5" />
 
+
         <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-20 lg:px-10 lg:pb-20 lg:pt-24">
 
           <div className="max-w-3xl">
@@ -98,16 +104,19 @@ export default function LiveChallenge() {
 
             </div>
 
+
             {/* Heading */}
 
             <h1 className="text-5xl font-bold leading-[1.05] tracking-[-0.045em] sm:text-6xl">
 
-              Choose your
+              Choose your{" "}
+
               <span className="text-[#8F2945]">
-                {" "}level.
+                level.
               </span>
 
             </h1>
+
 
             <p className="mt-6 max-w-2xl text-base leading-7 text-[#6B6863] sm:text-lg">
               Join a live GD session with other students.
@@ -128,6 +137,9 @@ export default function LiveChallenge() {
 
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
 
+
+          {/* SECTION DIVIDER */}
+
           <div className="flex items-center gap-4">
 
             <div className="h-px flex-1 bg-[#E2E2E2]" />
@@ -141,7 +153,10 @@ export default function LiveChallenge() {
           </div>
 
 
+          {/* LEVEL CARDS */}
+
           <div className="mt-8 grid gap-5 md:grid-cols-3">
+
 
             {/* ================= BEGINNER ================= */}
 
@@ -159,6 +174,7 @@ export default function LiveChallenge() {
 
               </div>
 
+
               <div className="mt-9">
 
                 <h2 className="text-2xl font-bold tracking-[-0.02em]">
@@ -172,6 +188,7 @@ export default function LiveChallenge() {
                 </p>
 
               </div>
+
 
               <div className="mt-auto border-t border-[#EEEEEE] pt-5">
 
@@ -211,6 +228,7 @@ export default function LiveChallenge() {
 
               </div>
 
+
               <div className="mt-9">
 
                 <h2 className="text-2xl font-bold tracking-[-0.02em]">
@@ -223,6 +241,7 @@ export default function LiveChallenge() {
                 </p>
 
               </div>
+
 
               <div className="mt-auto border-t border-[#EEEEEE] pt-5">
 
@@ -262,6 +281,7 @@ export default function LiveChallenge() {
 
               </div>
 
+
               <div className="mt-9">
 
                 <h2 className="text-2xl font-bold tracking-[-0.02em]">
@@ -274,6 +294,7 @@ export default function LiveChallenge() {
                 </p>
 
               </div>
+
 
               <div className="mt-auto border-t border-[#EEEEEE] pt-5">
 
@@ -325,6 +346,7 @@ export default function LiveChallenge() {
 
               </div>
 
+
               <div className="border-[#E5E5E5] md:border-l md:pl-8">
 
                 <p className="text-2xl font-bold">
@@ -336,6 +358,7 @@ export default function LiveChallenge() {
                 </p>
 
               </div>
+
 
               <div className="border-[#E5E5E5] md:border-l md:pl-8">
 

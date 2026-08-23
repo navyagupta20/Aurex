@@ -1,15 +1,23 @@
 "use client";
 
-import { useSearchParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import {
+  Suspense,
+  useState,
+} from "react";
+import {
+  useSearchParams,
+  useRouter,
+} from "next/navigation";
 
-export default function IntermediateSession() {
+function IntermediateSessionContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const challengeId = searchParams.get("challengeId");
+  const challengeId =
+    searchParams.get("challengeId");
 
-  const [joining, setJoining] = useState(false);
+  const [joining, setJoining] =
+    useState(false);
 
   async function joinSession() {
     if (!challengeId) {
@@ -21,7 +29,8 @@ export default function IntermediateSession() {
 
     try {
       // Temporary test user
-      const userId = "1cdf19aa-f9c1-4ca9-a2b4-ad9e8e797d24";
+      const userId =
+        "1cdf19aa-f9c1-4ca9-a2b4-ad9e8e797d24";
 
       const response = await fetch(
         `/api/live-challenges/${challengeId}/join`,
@@ -36,7 +45,8 @@ export default function IntermediateSession() {
         }
       );
 
-      const data = await response.json();
+      const data =
+        await response.json();
 
       if (!response.ok) {
         if (
@@ -50,11 +60,14 @@ export default function IntermediateSession() {
         }
 
         throw new Error(
-          data.error || "Failed to join session"
+          data.error ||
+            "Failed to join session"
         );
       }
 
-      router.push(`/practice/gd/${challengeId}`);
+      router.push(
+        `/practice/gd/${challengeId}`
+      );
     } catch (error) {
       console.error(error);
 
@@ -83,8 +96,8 @@ export default function IntermediateSession() {
           </h1>
 
           <p className="mt-5 leading-7 text-slate-400">
-            You are about to enter a live group discussion
-            with other students.
+            You are about to enter a live group
+            discussion with other students.
           </p>
 
         </div>
@@ -134,5 +147,21 @@ export default function IntermediateSession() {
 
       </div>
     </main>
+  );
+}
+
+export default function IntermediateSession() {
+  return (
+    <Suspense
+      fallback={
+        <main className="min-h-screen bg-slate-950 flex items-center justify-center text-white">
+          <p className="text-slate-400">
+            Loading session...
+          </p>
+        </main>
+      }
+    >
+      <IntermediateSessionContent />
+    </Suspense>
   );
 }

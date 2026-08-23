@@ -22,6 +22,20 @@
       "when": 1787079220129,
       "tag": "0002_green_gorilla_man",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1787423080620,
+      "tag": "0003_wooden_tag",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1787424026476,
+      "tag": "0004_parallel_fallen_one",
+      "breakpoints": true
     }
   ]
 }

@@ -2,15 +2,29 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 
 export default function SignInPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(
+    e: React.FormEvent<HTMLFormElement>
+  ) {
     e.preventDefault();
 
-    console.log("Sign in:", email, password);
+    const result = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+
+    if (result?.error) {
+      alert("Invalid email or password");
+      return;
+    }
+
+    window.location.href = "/";
   }
 
   return (
@@ -186,7 +200,7 @@ export default function SignInPage() {
               New to Aurex?{" "}
 
               <Link
-                href="/signin"
+                href="/signup"
                 className="font-semibold text-[#8F2945] transition hover:text-[#171717]"
               >
                 Create an account

@@ -1,197 +1,8 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
-
-const topics = {
-  Beginner: [
-    {
-      title: "Should Students Use Smartphones in College?",
-      description:
-        "Explore whether smartphones help students learn or distract them.",
-      time: "15 min",
-    },
-    {
-      title: "Online Education vs Offline Education",
-      description:
-        "Discuss which learning environment is more effective for students.",
-      time: "15 min",
-    },
-    {
-      title: "Should College Attendance Be Mandatory?",
-      description:
-        "Discuss freedom, discipline, learning outcomes and responsibility.",
-      time: "15 min",
-    },
-    {
-      title: "Social Media: Boon or Curse?",
-      description:
-        "Understand the positive and negative effects of social media.",
-      time: "15 min",
-    },
-    {
-      title: "Is Competition Good for Students?",
-      description:
-        "Discuss how competition affects motivation and performance.",
-      time: "15 min",
-    },
-    {
-      title: "Should Students Have Part-Time Jobs?",
-      description:
-        "Balance academics, experience, independence and time management.",
-      time: "15 min",
-    },
-  ],
-
-  Intermediate: [
-    {
-      title: "Impact of Artificial Intelligence",
-      description:
-        "Discuss the benefits, challenges and future impact of AI.",
-      time: "15 min",
-    },
-    {
-      title: "Will AI Replace Human Jobs?",
-      description:
-        "Explore automation, creativity, employment and human skills.",
-      time: "15 min",
-    },
-    {
-      title: "Work From Home vs Office",
-      description:
-        "Compare productivity, collaboration, flexibility and work culture.",
-      time: "15 min",
-    },
-    {
-      title: "Electric Vehicles: Future or Challenge?",
-      description:
-        "Discuss sustainability, infrastructure, cost and adoption.",
-      time: "15 min",
-    },
-    {
-      title: "Skills vs Degrees",
-      description:
-        "Should companies prioritize practical skills over academic degrees?",
-      time: "15 min",
-    },
-    {
-      title: "Is Social Media Changing Society?",
-      description:
-        "Discuss influence, communication, misinformation and culture.",
-      time: "15 min",
-    },
-  ],
-
-  Advanced: [
-    {
-      title: "AI and the Future of Employment",
-      description:
-        "Analyze how AI could reshape industries and the global workforce.",
-      time: "15 min",
-    },
-    {
-      title: "Privacy vs National Security",
-      description:
-        "Explore the difficult balance between individual privacy and security.",
-      time: "15 min",
-    },
-    {
-      title: "Can Technology Solve Climate Change?",
-      description:
-        "Discuss innovation, policy, responsibility and environmental limits.",
-      time: "15 min",
-    },
-    {
-      title: "Universal Basic Income",
-      description:
-        "Debate economic security, employment and government responsibility.",
-      time: "15 min",
-    },
-    {
-      title: "Globalization: Opportunity or Threat?",
-      description:
-        "Examine trade, jobs, culture and economic inequality.",
-      time: "15 min",
-    },
-    {
-      title: "Human Intelligence vs Artificial Intelligence",
-      description:
-        "Compare reasoning, creativity, adaptability and machine intelligence.",
-      time: "15 min",
-    },
-  ],
-};
-
-type Level = keyof typeof topics;
 
 export default function PracticePage() {
-  const [activeLevel, setActiveLevel] =
-    useState<Level>("Beginner");
-
-  const currentTopics = topics[activeLevel];
-
   return (
     <main className="min-h-screen bg-[#FAFAF9] text-[#171717]">
-
-      {/* ================= NAVBAR ================= */}
-
-      <nav className="border-b border-[#E5E5E5] bg-white">
-
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
-
-          <Link href="/" className="flex items-center gap-3">
-
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#171717] text-sm font-bold text-white">
-              A
-            </div>
-
-            <div>
-              <p className="text-lg font-bold tracking-tight">
-                Aurex
-              </p>
-
-              <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[#8F2945]">
-                Practice. Prepare. Compete.
-              </p>
-            </div>
-
-          </Link>
-
-          <div className="hidden items-center gap-8 text-sm font-medium md:flex">
-
-            <Link
-              href="/"
-              className="text-[#6B6863] transition hover:text-[#171717]"
-            >
-              Home
-            </Link>
-
-            <Link
-              href="/practice"
-              className="text-[#8F2945]"
-            >
-              Practice
-            </Link>
-
-            <Link
-              href="/about"
-              className="text-[#6B6863] transition hover:text-[#171717]"
-            >
-              About
-            </Link>
-
-            <Link
-              href="/signin"
-              className="rounded-lg bg-[#171717] px-5 py-2.5 text-white transition hover:bg-[#8F2945]"
-            >
-              Sign In
-            </Link>
-
-          </div>
-
-        </div>
-
-      </nav>
 
       {/* ================= HERO ================= */}
 
@@ -205,111 +16,58 @@ export default function PracticePage() {
 
         <div className="pointer-events-none absolute left-[-100px] top-52 h-64 w-64 rounded-full bg-[#8F2945]/5" />
 
-        <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-20 lg:px-10 lg:pb-24 lg:pt-28">
+        <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-14 lg:px-10 lg:pb-18 lg:pt-16">
 
           <div className="max-w-4xl">
 
-            {/* Label */}
+            {/* ================= BACK TO HOME ================= */}
 
-            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#E2E2E2] bg-[#FAFAF9] px-4 py-2">
+            <Link
+              href="/"
+              className="mb-7 inline-flex items-center gap-2 text-sm font-semibold text-[#6B6863] transition hover:text-[#8F2945]"
+            >
+              <span className="text-lg">←</span>
+              <span>Back to Home</span>
+            </Link>
 
-              <span className="h-2 w-2 rounded-full bg-[#8F2945]" />
 
-              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#6B6863]">
-                Aurex Practice Center
-              </span>
+            {/* ================= LABEL ================= */}
+
+            <div className="mb-4">
+
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#E2E2E2] bg-[#FAFAF9] px-4 py-2">
+
+                <span className="h-2 w-2 rounded-full bg-[#8F2945]" />
+
+                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#6B6863]">
+                  Aurex · GD Preparation
+                </span>
+
+              </div>
 
             </div>
 
-            {/* Heading */}
+
+            {/* ================= HEADING ================= */}
 
             <h1 className="text-5xl font-bold leading-[1.05] tracking-[-0.045em] sm:text-6xl lg:text-7xl">
 
-              Practice how you
+              Explore your{" "}
+
               <span className="text-[#8F2945]">
-                {" "}think,
-              </span>
-
-              <br />
-
-              speak and
-              <span className="italic">
-                {" "}compete.
+                potential
               </span>
 
             </h1>
 
-            {/* Description */}
 
-            <p className="mt-7 max-w-2xl text-base leading-7 text-[#6B6863] sm:text-lg">
+            {/* ================= DESCRIPTION ================= */}
 
-              Build confidence through realistic group discussion
-              topics designed for college placements, interviews
-              and competitive discussions.
-
+            <p className="mt-5 max-w-2xl text-base leading-7 text-[#6B6863] sm:text-lg">
+              Build confidence, sharpen your ideas, and strengthen
+              the communication skills you need to perform better
+              in every group discussion.
             </p>
-
-            {/* Buttons */}
-
-            <div className="mt-9 flex flex-wrap gap-3">
-
-              <a
-                href="#topics"
-                className="rounded-lg bg-[#171717] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#8F2945]"
-              >
-                Explore Topics
-              </a>
-
-              <Link
-                href="/practice/live-challenge"
-                className="rounded-lg border border-[#DCDCDC] bg-white px-6 py-3 text-sm font-semibold text-[#171717] transition hover:border-[#8F2945] hover:text-[#8F2945]"
-              >
-                Join Live GD
-              </Link>
-
-            </div>
-
-          </div>
-
-          {/* Stats */}
-
-          <div className="mt-16 grid max-w-2xl grid-cols-3 border-t border-[#E5E5E5] pt-6">
-
-            <div>
-
-              <p className="text-2xl font-bold">
-                18+
-              </p>
-
-              <p className="mt-1 text-xs text-[#888]">
-                GD Topics
-              </p>
-
-            </div>
-
-            <div className="border-l border-[#E5E5E5] pl-6">
-
-              <p className="text-2xl font-bold">
-                3
-              </p>
-
-              <p className="mt-1 text-xs text-[#888]">
-                Difficulty Levels
-              </p>
-
-            </div>
-
-            <div className="border-l border-[#E5E5E5] pl-6">
-
-              <p className="text-2xl font-bold">
-                15
-              </p>
-
-              <p className="mt-1 text-xs text-[#888]">
-                Min Live GD
-              </p>
-
-            </div>
 
           </div>
 
@@ -317,183 +75,159 @@ export default function PracticePage() {
 
       </section>
 
-      {/* ================= TOPICS ================= */}
 
-      <section
-        id="topics"
-        className="bg-[#FAFAF9] py-16 lg:py-20"
-      >
+      {/* ================= PRACTICE OPTIONS ================= */}
+
+      <section className="bg-[#FAFAF9] pt-10 pb-16 lg:pt-12 lg:pb-20">
 
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
 
-          {/* Header */}
+          {/* ================= SECTION HEADING ================= */}
 
-          <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
+          <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
 
             <div>
 
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#8F2945]">
-                Topic Library
+                Practice
               </p>
 
-              <h2 className="mt-3 text-4xl font-bold tracking-[-0.035em]">
-                Choose your challenge.
+              <h2 className="mt-3 text-3xl font-bold tracking-[-0.035em] sm:text-4xl">
+                Choose how you want to practice
               </h2>
 
               <p className="mt-3 max-w-xl text-sm leading-6 text-[#6B6863]">
-                Start at your level and gradually move toward
-                more complex discussions.
+                Practice independently or step into a real-time
+                group discussion environment.
               </p>
 
             </div>
 
-            {/* Difficulty tabs */}
-
-            <div className="flex rounded-xl border border-[#DEDEDE] bg-white p-1">
-
-              {(Object.keys(topics) as Level[]).map(
-                (level) => (
-
-                  <button
-                    key={level}
-                    onClick={() =>
-                      setActiveLevel(level)
-                    }
-                    className={`rounded-lg px-4 py-2.5 text-xs font-semibold transition ${
-                      activeLevel === level
-                        ? "bg-[#171717] text-white"
-                        : "text-[#777] hover:text-[#171717]"
-                    }`}
-                  >
-                    {level}
-                  </button>
-
-                )
-              )}
-
-            </div>
-
           </div>
 
-          {/* Divider */}
 
-          <div className="mt-12 flex items-center gap-4">
+          {/* ================= CARDS ================= */}
 
-            <div className="h-px flex-1 bg-[#E2E2E2]" />
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
 
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#999]">
-              {activeLevel} · {currentTopics.length} Topics
-            </p>
 
-            <div className="h-px flex-1 bg-[#E2E2E2]" />
+            {/* ================= TOPIC BASED ================= */}
 
-          </div>
+            <article className="group flex min-h-[320px] flex-col rounded-2xl border border-[#E2E2E2] bg-white p-8 transition duration-300 hover:-translate-y-1 hover:border-[#BFA4AE] hover:shadow-[0_18px_45px_rgba(0,0,0,0.07)]">
 
-          {/* Topic cards */}
+              <div className="flex items-center justify-between">
 
-          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                <span className="text-xs font-bold text-[#B5B5B5]">
+                  Topic-Based
+                </span>
 
-            {currentTopics.map(
-              (topic, index) => (
+                <span className="rounded-full bg-[#8F2945]/8 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#8F2945]">
+                  Self Practice
+                </span>
 
-                <article
-                  key={topic.title}
-                  className="group flex min-h-[280px] flex-col rounded-2xl border border-[#E2E2E2] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:border-[#BFA4AE] hover:shadow-[0_18px_45px_rgba(0,0,0,0.07)]"
+              </div>
+
+
+              <div className="mt-8">
+
+                <h3 className="text-2xl font-bold leading-snug tracking-[-0.02em]">
+                  Topic-Based GD
+                </h3>
+
+                <p className="mt-4 max-w-lg text-sm leading-6 text-[#777]">
+                  Explore curated group discussion topics across
+                  different difficulty levels. Organise your thoughts,
+                  build strong arguments, and practise at your own pace.
+                </p>
+
+              </div>
+
+
+              <div className="mt-auto border-t border-[#EEEEEE] pt-5">
+
+                <Link
+                  href="/practice/topic-based"
+                  className="flex items-center justify-between text-sm font-semibold text-[#171717]"
                 >
 
-                  {/* Top */}
+                  <span>
+                    Explore Topics
+                  </span>
 
-                  <div className="flex items-start justify-between">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#DCDCDC] text-sm transition group-hover:border-[#8F2945] group-hover:bg-[#8F2945] group-hover:text-white">
+                    →
+                  </span>
 
-                    <span className="text-xs font-bold text-[#B5B5B5]">
-                      {String(index + 1).padStart(
-                        2,
-                        "0"
-                      )}
-                    </span>
+                </Link>
 
-                    <span className="rounded-full bg-[#8F2945]/8 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#8F2945]">
-                      {activeLevel}
-                    </span>
+              </div>
 
-                  </div>
+            </article>
 
-                  {/* Topic */}
 
-                  <div className="mt-9">
+            {/* ================= LIVE GD ================= */}
 
-                    <h3 className="text-xl font-bold leading-snug tracking-[-0.02em]">
-                      {topic.title}
-                    </h3>
+            <article className="group flex min-h-[320px] flex-col rounded-2xl border border-[#E2E2E2] bg-white p-8 transition duration-300 hover:-translate-y-1 hover:border-[#BFA4AE] hover:shadow-[0_18px_45px_rgba(0,0,0,0.07)]">
 
-                    <p className="mt-4 text-sm leading-6 text-[#777]">
-                      {topic.description}
-                    </p>
+              <div className="flex items-center justify-between">
 
-                  </div>
+                <span className="text-xs font-bold text-[#B5B5B5]">
+                  Live Discussion
+                </span>
 
-                  {/* Bottom */}
+                <span className="flex items-center gap-2 rounded-full bg-[#8F2945]/8 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#8F2945]">
 
-                  <div className="mt-auto flex items-center justify-between border-t border-[#EEEEEE] pt-5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#8F2945]" />
 
-                    <span className="text-xs font-medium text-[#999]">
-                      {topic.time}
-                    </span>
+                  Live GD
 
-                    <button className="flex h-9 w-9 items-center justify-center rounded-full border border-[#DCDCDC] text-sm transition group-hover:border-[#8F2945] group-hover:bg-[#8F2945] group-hover:text-white">
-                      →
-                    </button>
+                </span>
 
-                  </div>
+              </div>
 
-                </article>
 
-              )
-            )}
+              <div className="mt-8">
 
-          </div>
+                <h3 className="text-2xl font-bold leading-snug tracking-[-0.02em]">
+                  Live Group Discussion
+                </h3>
 
-        </div>
+                <p className="mt-4 max-w-lg text-sm leading-6 text-[#777]">
+                  Join a real-time discussion with other students.
+                  Respond to different viewpoints, communicate your
+                  ideas clearly, and experience a realistic GD setting.
+                </p>
 
-      </section>
+              </div>
 
-      {/* ================= CTA ================= */}
 
-      <section className="bg-[#171717] text-white">
+              <div className="mt-auto border-t border-[#EEEEEE] pt-5">
 
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+                <Link
+                  href="/practice/live-challenge"
+                  className="flex items-center justify-between text-sm font-semibold text-[#171717]"
+                >
 
-          <div className="grid items-center gap-10 md:grid-cols-[1fr_auto]">
+                  <span>
+                    Join Live GD
+                  </span>
 
-            <div>
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#DCDCDC] text-sm transition group-hover:border-[#8F2945] group-hover:bg-[#8F2945] group-hover:text-white">
+                    →
+                  </span>
 
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#C98A9D]">
-                Ready to compete?
-              </p>
+                </Link>
 
-              <h2 className="mt-4 max-w-2xl text-3xl font-bold tracking-[-0.03em] sm:text-4xl">
-                Take your practice into a real-time GD.
-              </h2>
+              </div>
 
-              <p className="mt-4 max-w-xl text-sm leading-6 text-[#A5A5A5]">
-                Join other students, discuss a topic and
-                experience a realistic group discussion.
-              </p>
-
-            </div>
-
-            <Link
-              href="/practice/live-challenge"
-              className="inline-flex items-center justify-center rounded-lg bg-white px-7 py-3.5 text-sm font-semibold text-[#171717] transition hover:bg-[#8F2945] hover:text-white"
-            >
-              Enter Live GD →
-            </Link>
+            </article>
 
           </div>
 
         </div>
 
       </section>
+
 
       {/* ================= FOOTER ================= */}
 

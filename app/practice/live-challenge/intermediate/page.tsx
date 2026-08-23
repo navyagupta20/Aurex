@@ -27,11 +27,16 @@ export default function LiveIntermediate() {
       setLoading(true);
 
       const response = await fetch(
-        "/api/live-challenges"
+        "/api/live-challenges",
+        {
+          cache: "no-store",
+        }
       );
 
       if (!response.ok) {
-        throw new Error("Failed to load challenges");
+        throw new Error(
+          "Failed to load challenges"
+        );
       }
 
       const data: Challenge[] =
@@ -39,14 +44,18 @@ export default function LiveIntermediate() {
 
       const waitingChallenge = data.find(
         (item) =>
-          item.level.toLowerCase() === "intermediate" &&
+          item.level.toLowerCase() ===
+            "intermediate" &&
           item.status === "waiting" &&
           item.maxParticipants > 0
       );
 
-      setChallenge(waitingChallenge || null);
+      setChallenge(
+        waitingChallenge || null
+      );
     } catch (error) {
       console.error(error);
+      setChallenge(null);
     } finally {
       setLoading(false);
     }
@@ -67,9 +76,8 @@ export default function LiveIntermediate() {
     try {
       setJoining(true);
 
-      const userResponse = await fetch(
-        "/api/auth/me"
-      );
+      const userResponse =
+        await fetch("/api/auth/me");
 
       if (!userResponse.ok) {
         alert("Please sign in first.");
@@ -77,14 +85,16 @@ export default function LiveIntermediate() {
         return;
       }
 
-      const user = await userResponse.json();
+      const user =
+        await userResponse.json();
 
       const response = await fetch(
         `/api/live-challenges/${challenge.id}/join`,
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type":
+              "application/json",
           },
           body: JSON.stringify({
             userId: user.id,
@@ -92,11 +102,13 @@ export default function LiveIntermediate() {
         }
       );
 
-      const data = await response.json();
+      const data =
+        await response.json();
 
       if (!response.ok) {
         alert(
-          data.error || "Unable to join challenge."
+          data.error ||
+            "Unable to join challenge."
         );
         return;
       }
@@ -118,7 +130,7 @@ export default function LiveIntermediate() {
   return (
     <main className="min-h-screen bg-[#FAFAF9] text-[#171717]">
 
-      {/* ================= NAVBAR ================= */}
+      {/* NAVBAR */}
 
       <nav className="border-b border-[#E5E5E5] bg-white">
 
@@ -128,13 +140,11 @@ export default function LiveIntermediate() {
             href="/"
             className="flex items-center gap-3"
           >
-
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#171717] text-sm font-bold text-white">
               A
             </div>
 
             <div>
-
               <p className="text-lg font-bold tracking-tight">
                 Aurex
               </p>
@@ -142,9 +152,7 @@ export default function LiveIntermediate() {
               <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[#8F2945]">
                 Practice. Prepare. Compete.
               </p>
-
             </div>
-
           </Link>
 
           <div className="hidden items-center gap-8 text-sm font-medium md:flex">
@@ -190,8 +198,7 @@ export default function LiveIntermediate() {
 
       </nav>
 
-
-      {/* ================= HERO ================= */}
+      {/* HERO */}
 
       <section className="relative overflow-hidden bg-white">
 
@@ -217,17 +224,17 @@ export default function LiveIntermediate() {
 
             <h1 className="text-5xl font-bold leading-[1.05] tracking-[-0.045em] sm:text-6xl">
 
-              Step into a
+              Join an
               <span className="text-[#8F2945]">
-                {" "}stronger GD.
+                {" "}Intermediate GD.
               </span>
 
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-7 text-[#6B6863] sm:text-lg">
-              Challenge your reasoning and communication
-              skills through an intermediate-level live
-              group discussion.
+              Take part in a live group discussion
+              designed to test stronger reasoning,
+              communication and structured thinking.
             </p>
 
           </div>
@@ -236,8 +243,7 @@ export default function LiveIntermediate() {
 
       </section>
 
-
-      {/* ================= SESSION ================= */}
+      {/* SESSION */}
 
       <section className="bg-[#FAFAF9] py-16 lg:py-20">
 
@@ -254,7 +260,6 @@ export default function LiveIntermediate() {
             <div className="h-px flex-1 bg-[#E2E2E2]" />
 
           </div>
-
 
           <div className="mt-8 rounded-2xl border border-[#E2E2E2] bg-white p-7 shadow-[0_18px_45px_rgba(0,0,0,0.05)] md:p-9">
 
@@ -286,6 +291,11 @@ export default function LiveIntermediate() {
                       Ready to join?
                     </h2>
 
+                    <p className="mt-3 max-w-lg text-sm leading-6 text-[#6B6863]">
+                      Enter the live session and
+                      prepare for the discussion.
+                    </p>
+
                   </div>
 
                   <span className="inline-flex w-fit items-center gap-2 rounded-full bg-[#8F2945]/8 px-4 py-2 text-xs font-bold uppercase tracking-[0.1em] text-[#8F2945]">
@@ -298,8 +308,7 @@ export default function LiveIntermediate() {
 
                 </div>
 
-
-                <div className="mt-7 grid gap-4 md:grid-cols-3">
+                <div className="mt-7 grid gap-4 md:grid-cols-2">
 
                   <div className="rounded-xl border border-[#E5E5E5] bg-[#FAFAF9] p-5">
 
@@ -313,51 +322,43 @@ export default function LiveIntermediate() {
 
                   </div>
 
-
-                  <div className="rounded-xl border border-[#E5E5E5] bg-[#FAFAF9] p-5 md:col-span-2">
+                  <div className="rounded-xl border border-[#E5E5E5] bg-[#FAFAF9] p-5">
 
                     <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#999]">
-                      Topic
+                      Thinking Time
                     </p>
 
-                    <p className="mt-2 text-lg font-bold leading-snug">
-                      {challenge.topicTitle}
+                    <p className="mt-2 text-lg font-bold">
+                      2 minutes
                     </p>
 
                   </div>
 
                 </div>
 
-
                 <div className="mt-5 rounded-xl border border-[#E5E5E5] bg-[#171717] p-6 text-white">
 
-                  <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
+                  <div className="flex items-center gap-4">
+
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#8F2945]">
+                      <span className="text-lg font-bold">
+                        ?
+                      </span>
+                    </div>
 
                     <div>
 
                       <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#A5A5A5]">
-                        Live Session
+                        GD Topic
                       </p>
 
-                      <p className="mt-2 text-xl font-bold">
-                        Available to join
+                      <p className="mt-1 text-lg font-bold">
+                        Revealed inside the GD
                       </p>
 
                       <p className="mt-1 text-sm text-[#A5A5A5]">
-                        Join the session and prepare to
-                        defend your ideas.
-                      </p>
-
-                    </div>
-
-                    <div className="text-left sm:text-right">
-
-                      <p className="text-3xl font-bold">
-                        15
-                      </p>
-
-                      <p className="text-xs text-[#A5A5A5]">
-                        minutes
+                        You will see the topic when
+                        the session begins.
                       </p>
 
                     </div>
@@ -365,7 +366,6 @@ export default function LiveIntermediate() {
                   </div>
 
                 </div>
-
 
                 <button
                   onClick={joinChallenge}
@@ -417,8 +417,7 @@ export default function LiveIntermediate() {
 
       </section>
 
-
-      {/* ================= FOOTER ================= */}
+      {/* FOOTER */}
 
       <footer className="border-t border-[#E5E5E5] bg-white">
 

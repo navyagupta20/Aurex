@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import bcrypt from "bcryptjs";
 
 import { db } from "@/lib/db";
 import { users } from "@/lib/db/schema";
@@ -13,14 +14,20 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           label: "Email",
           type: "email",
         },
+
+        password: {
+          label: "Password",
+          type: "password",
+        },
       },
 
       async authorize(credentials) {
-        if (!credentials?.email) {
+        if (!credentials?.email || !credentials?.password) {
           return null;
         }
 
         const email = credentials.email as string;
+        const password = credentials.password as string;
 
         const result = await db
           .select()
@@ -31,6 +38,19 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const user = result[0];
 
         if (!user) {
+          return null;
+        }
+
+        if (!user.passwordHash) {
+          return null;
+        }
+
+        const passwordMatches = await bcrypt.compare(
+          password,
+          user.passwordHash
+        );
+
+        if (!passwordMatches) {
           return null;
         }
 

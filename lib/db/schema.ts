@@ -18,6 +18,10 @@ export const users = pgTable("users", {
     .notNull()
     .unique(),
 
+ passwordHash: varchar("password_hash", {
+  length: 255,
+}),
+
   createdAt: timestamp("created_at")
     .defaultNow()
     .notNull(),
@@ -53,6 +57,18 @@ export const gdSessions = pgTable("gd_sessions", {
   status: varchar("status", { length: 30 })
     .default("waiting")
     .notNull(),
+
+  // When the topic becomes visible to participants
+  topicRevealedAt: timestamp("topic_revealed_at"),
+
+  // When the 2-minute thinking period ends
+  thinkingEndsAt: timestamp("thinking_ends_at"),
+
+  // When the 15-minute GD starts
+  gdStartsAt: timestamp("gd_starts_at"),
+
+  // When the 15-minute GD ends
+  gdEndsAt: timestamp("gd_ends_at"),
 
   createdAt: timestamp("created_at")
     .defaultNow()
@@ -148,4 +164,66 @@ export const liveChallengeMessages =
         .defaultNow()
         .notNull(),
     }
+  );
+  /* ================= GD RESULTS ================= */
+
+export const gdResults = pgTable(
+  "gd_results",
+  {
+    id: uuid("id")
+      .defaultRandom()
+      .primaryKey(),
+
+    sessionId: uuid("session_id")
+      .notNull(),
+
+    userId: uuid("user_id")
+      .notNull(),
+
+    overallScore: integer(
+      "overall_score"
+    ).default(0).notNull(),
+
+    communicationScore: integer(
+      "communication_score"
+    ).default(0).notNull(),
+
+    contentScore: integer(
+      "content_score"
+    ).default(0).notNull(),
+
+    confidenceScore: integer(
+      "confidence_score"
+    ).default(0).notNull(),
+
+    relevanceScore: integer(
+      "relevance_score"
+    ).default(0).notNull(),
+
+    participationScore: integer(
+      "participation_score"
+    ).default(0).notNull(),
+
+    leadershipScore: integer(
+      "leadership_score"
+    ).default(0).notNull(),
+
+    strengths: text(
+      "strengths"
+    ),
+
+    improvements: text(
+      "improvements"
+    ),
+
+    analysis: text(
+      "analysis"
+    ),
+
+    createdAt: timestamp(
+      "created_at"
+    )
+      .defaultNow()
+      .notNull(),
+  }
   );
