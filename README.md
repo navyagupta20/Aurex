@@ -1,4 +1,4 @@
-# Aurex – GD Practice Platform
+# Aurex - GD Practice Platform
 
 Aurex is a **full-stack Group Discussion (GD) and placement preparation platform** designed to help students build confidence, improve communication skills, and prepare for campus placements.
 
