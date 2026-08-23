@@ -54,10 +54,6 @@ Aurex aims to provide students with a **free and accessible platform to practice
 * 🗺️ **Placement Preparation Roadmap**
 * 📧 **GD Session Notifications**
 
-## 📚 Learn More
-
-This project is built with [Next.js](https://nextjs.org).
-
 ## 📄 License
 
 This project is developed as a student project for learning and placement preparation.
