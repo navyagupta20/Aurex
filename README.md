@@ -4,6 +4,7 @@ Aurex is a **full-stack Group Discussion (GD) and placement preparation platform
 
 The platform provides students with a structured environment to practice GDs through **topic-based practice, live discussion sessions, and ATS-based resume analysis**. It is designed to make placement preparation accessible, simple, and beginner-friendly.
 
+Live Demo: https://aurex-ten-olive.vercel.app/
 ## ✨ Features
 
 * 🗣️ **Topic-Based GD Practice** – Practice discussions across beginner-friendly topics.
